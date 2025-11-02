@@ -19,8 +19,8 @@ RUN cd client && npm install
 # Copy the rest of the application code
 COPY . .
 
-# Build the client
-RUN cd client && npm run build
+# Build the client with increased heap size
+RUN cd client && NODE_OPTIONS="--max-old-space-size=4096" npm run build
 
 # Expose the port the app runs on
 EXPOSE 8081
